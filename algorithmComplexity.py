@@ -154,3 +154,48 @@ def search1(L, e):
 	else:
 		return bSearch(L, e, 0, len(L) - 1)
 
+def merge(left, right, compare):
+	result = []
+	i,j = 0, 0
+	while i < len(left) and j < len(right):
+		if compare(left[i], right[j]):
+			result.append(left[i])
+			i += 1
+		else:
+			result.append(right[j])
+			j += 1
+	while (i < len(left)):
+		result.append(left[i])
+		i += 1
+	while (j < len(right)):
+		result.append(right[j])
+		j += 1
+	return result
+def mergeSort(L, compare = lambda x, y:x < y):
+	if len(L) < 2:
+		return L[:]
+	else:
+		middle = len(L)//2
+		left = mergeSort(L[:middle], compare)
+		right = mergeSort(L[middle:], compare)
+		return merge(left, right ,compare)
+L = [2, 1, 4, 5, 3]
+print (mergeSort(L), mergeSort(L, lambda x, y:x > y))
+
+def lastNameFristName(name1, name2):
+	arg1 = name1.split(' ')
+	arg2 = name2.split(' ')
+	if arg1[1] != arg2[1]:
+		return arg1[1] < arg2[1]
+def firstNameLastName(name1, name2):
+	arg1 = name1.split(' ')
+	arg2 = name2.split(' ')
+	if arg1[0] != arg2[0]:
+		return arg1[0] < arg2[0]
+	else:
+		return arg1[1] < arg2[1]
+L = ['Tom Brady', 'Eric Grimson', 'Gisele Bundchen'] 
+newL = mergeSort(L, lastNameFristName)
+print('Sorted by last name= ',newL)
+newL = mergeSort(L, firstNameLastName)
+print('Sorted by first name = ',newL)
