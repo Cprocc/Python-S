@@ -153,4 +153,4 @@ def search1(L, e):
 		return False
 	else:
 		return bSearch(L, e, 0, len(L) - 1)
-	
+
