@@ -12,21 +12,21 @@ def get_list(dep,item):
     url = 'https://touch.dujia.qunar.com/list?modules=list,bookingInfo,activityDetail&dep={}&query={}' \
           '&dappDealTrace=false&mobFunction=%E6%89%A9%E5%B1%95%E8%87%AA%E7%94%B1%E8%A1%8C' \
           '&cfrom=zyx&it=FreetripTouchin&date=&configDepNew=' \
-          '&needNoResult=true&originalquery={}&limit=0,20&includeAD=true&qsact=search' \
+          '&needNoResult=true&originalquery={}&limit=0,32&includeAD=true&qsact=search' \
         .format(urllib.request.quote(dep), urllib.request.quote(item), urllib.request.quote(item))
     strhtml = get_json(url)
     routeCount = int(strhtml['data']['limit']['routeCount'])
-    for limit in range(0, routeCount, 20):
+    for limit in range(0, routeCount, 32):
         url = 'https://touch.dujia.qunar.com/list?modules=list,bookingInfo,activityDetail&dep={}&query={}' \
               '&dappDealTrace=false&mobFunction=%E6%89%A9%E5%B1%95%E8%87%AA%E7%94%B1%E8%A1%8C' \
               '&cfrom=zyx&it=FreetripTouchin&date=&configDepNew=' \
-              '&needNoResult=true&originalquery={}&limit={},20&includeAD=true&qsact=search' \
+              '&needNoResult=true&originalquery={}&limit={},32&includeAD=true&qsact=search' \
             .format(urllib.request.quote(dep), urllib.request.quote(item), urllib.request.quote(item), limit)
         strhtml = get_json(url)
         result = {
             'data': time.strftime('%Y-%m-%d', time.localtime(time.time())),
             'dep': dep,
-            'arrive': itme,
+            'arrive': item,
             'limit': limit,
             'result': strhtml.json()
         }
