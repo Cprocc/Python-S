@@ -1,4 +1,4 @@
-#matplotlib画图工具
+#  matplotlib画图工具
 
 - 由于这个工具python内置的，所以无法在pycharm中运行，所以需要在Anaconda的自带jupyter notebook启动python环境下运行
 
