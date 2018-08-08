@@ -8,3 +8,4 @@
 - Web_Crawler get/set/request基本方法解析
 - Echarts_baidu 百度的可视化库
 - TKinter_Gui 使用Ktinter开发python Gui
+- Therading_ZXC 多线程工作
