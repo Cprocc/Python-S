@@ -187,3 +187,18 @@ def funcArg(arg):
 def tes():
     print("---test-----")
 tes()
+
+##类装饰器
+class Test(object):
+    def __init__(self,func):  ##这里的func传过来的值是tes1
+        print("初始化")
+        print(func.__name__)
+        self.__func = func
+    def __call__(self, *args, **kwargs):
+        print("call me")
+        self.__func()
+
+@Test #tes1 = Test(tes1)
+def tes1():
+    print("----test----")
+tes1()
