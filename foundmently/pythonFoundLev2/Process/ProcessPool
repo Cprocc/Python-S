@@ -1,0 +1,29 @@
+##子进程数量不多时，直接利用multiprocessing中的Process动态生成多个进程
+##Pool免去手动创建多个进程的工作
+
+from multiprocessing import Pool
+import os,time,random
+
+def worker(msg):
+    t_start = time.time()
+    print("%s start doing,the process id is %d"%(msg,os.getpid()))
+    time.sleep(random.random()*2)
+    t_stop = time.time()
+    print(msg,"have finished,use%0.2f seconds"%(t_stop-t_start))
+
+if __name__ == "__main__":
+
+    # 创建三个进程池
+    # Pool.apply_async(要调用的目标，(传递的参数元组，))
+    po = Pool(3)
+    for i in range(0,10):
+        #apply() 使用阻塞方式调用func，必须等上一个进程执行完毕才能推出执行下一个进程
+        #apply_async() 使用非阻塞方式调用funcinished with exit code 0
+
+        po.apply(worker,(i,))
+        #po.apply_async(worker,(i,))
+
+    print('----start----')
+    po.close()
+    po.join()
+    print('----end----')

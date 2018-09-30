@@ -11,8 +11,8 @@ print(list(l3))
 #function:接受⼀个参数， 返回布尔值True或False
 #sequence:序列可以是str， tuple， list
 #filter(function, iterable)
-a= filter(lambda x:x%2,[1,2,3,4])
-b= filter(None,'she')
+a = filter(lambda x:x%2,[1,2,3,4])
+b = filter(None,'she')
 print(list(a),list(b))
 
 ###set

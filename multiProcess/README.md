@@ -1,5 +1,5 @@
 | Type code | C Type             | Python Type       | Minimum size in bytes |
-| --------- | : ---------------: | :-----------------: | :-------------: |
+|:---------:| : ---------------: | :---------------: | :-------------------: |
 | `'b'`     | signed char        | int               | 1                     |
 | `'B'`     | unsigned char      | int               | 1                     |
 | `'u'`     | Py_UNICODE         | Unicode character | 2                     |
