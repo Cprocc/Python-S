@@ -20,8 +20,8 @@ if __name__ == "__main__":
         #apply() 使用阻塞方式调用func，必须等上一个进程执行完毕才能推出执行下一个进程
         #apply_async() 使用非阻塞方式调用funcinished with exit code 0
 
-        po.apply(worker,(i,))
-        #po.apply_async(worker,(i,))
+        # po.apply(worker,(i,))
+        po.apply_async(worker,(i,))
 
     print('----start----')
     po.close()
