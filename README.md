@@ -9,3 +9,5 @@
 - Echarts_baidu 百度的可视化库
 - TKinter_Gui 使用Ktinter开发python Gui
 - Therading_ZXC 多线程工作
+- PythonWeb python网页版静态客户端
+- Re 正则表达式
