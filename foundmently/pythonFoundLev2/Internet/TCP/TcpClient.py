@@ -1,7 +1,6 @@
 from socket import *
 
 tcpClientSocket = socket(AF_INET,SOCK_STREAM)
-
 serAddress = ('192.168.56.1',7788)
 tcpClientSocket.connect(serAddress)
 
