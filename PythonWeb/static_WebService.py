@@ -5,73 +5,68 @@ import re
 # HTML_ROOT_DIR 为静态文件根目录
 HTML_ROOT_DIR = "./html"
 
-def handleClient(clientSocket):
+
+def handle_client(client_socket):
     """
     处理客户端请求
-    :param args:
+    :param client_socket:
     :return:
     """
     # 获取客户端请求数据
-    requestData = clientSocket.recv(1024)
-    print("requestData " + str(requestData))
+    request_data = client_socket.recv(1024)
+    print("request_data " + str(request_data))
 
     # 解析用户的请求头，判断是否需要对应的资源
-    requestLine = requestData.splitlines()
-    for line in requestLine:
+    request_line = request_data.splitlines()
+    for line in request_line:
         print(line)
     # 提取用户请求的文件名
-    requestStartLine = requestLine[0]
-    fileName = re.match(r"\w+ +(/[^ ]*) ",requestStartLine.decode("utf=8")).group(1)
+    request_start_line = request_line[0]
+    file_name = re.match(r"\w+ +(/[^ ]*) ", request_start_line.decode("utf=8")).group(1)
 
-    # if "/" == fileName:
-    if fileName == '/':
-        fileName = "/index.html"
+    # if "/" == file_name:
+    if file_name == '/':
+        file_name = "/index.html"
 
     try:
-        file = open(HTML_ROOT_DIR + fileName,"rb")
+        file = open(HTML_ROOT_DIR + file_name, "rb")
     except IOError:
-        responseStartLine = "HTTP/1.1 404 NOT Found\r\n"
-        responseHeaders = "Server:My server\r\n"
-        responseBody = "This file is not found!"
+        response_start_line = "HTTP/1.1 404 NOT Found\r\n"
+        response_headers = "Server:My server\r\n"
+        response_body = "This file is not found!"
     else:
-        fileData = file.read()
+        file_data = file.read()
         file.close()
-        responseStartLine = "HTTP/1.1 200 OK\r\n"
-        responseHeaders = "Server:My server\r\n"
-        responseBody = fileData.decode("utf-8")
+        response_start_line = "HTTP/1.1 200 OK\r\n"
+        response_headers = "Server:My server\r\n"
+        response_body = file_data.decode("utf-8")
 
-
-    # # 构造对客户端的响应数据
-    # responseStartLine = "HTTP/1.1 200 OK\r\n"
-    # responseHeaders = "Server:My server\r\n"
-    # responseBody = "hello pythonWeb"
-    response = responseStartLine + responseHeaders + "\r\n" + responseBody
+    # 构造对客户端的响应数据
+    # response_start_line = "HTTP/1.1 200 OK\r\n"
+    # response_headers = "Server:My server\r\n"
+    # response_body = "hello pythonWeb"
+    response = response_start_line + response_headers + "\r\n" + response_body
     print("response data "+str(response))
 
     # 将数据返回给客户端
-    clientSocket.send(bytes(response,"utf-8"))
-    clientSocket.close()
+    client_socket.send(bytes(response, "utf-8"))
+    client_socket.close()
 
-def mian():
-    serSocket = socket(AF_INET,SOCK_STREAM)
-    serSocket.setsockopt(SOL_SOCKET,SO_REUSEADDR,1)
-    serPort = ('',7799)
-    serSocket.bind(serPort)
-    serSocket.listen(100)
+
+def main():
+    ser_socket = socket(AF_INET, SOCK_STREAM)
+    ser_socket.setsockopt(SOL_SOCKET, SO_REUSEADDR, 1)
+    ser_port = ('', 7799)
+    ser_socket.bind(ser_port)
+    ser_socket.listen(100)
 
     while True:
-        clientSocket, cliSocketAddress = serSocket.accept()
-        print("[%s, %s]client connection"% cliSocketAddress)
-        handleProcess = Process(target=handleClient, args=(clientSocket,))
-        handleProcess.start()
-        clientSocket.close()
+        client_socket, client_socket_address = ser_socket.accept()
+        print("[%s, %s]client connection" % client_socket_address)
+        handle_process = Process(target=handle_client, args=(client_socket,))
+        handle_process.start()
+        client_socket.close()
 
-documentRoot = './html'
 
 if __name__ == '__main__':
-    mian()
-
-
-
-
-
+    main()
