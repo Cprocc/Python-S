@@ -4,7 +4,7 @@ import re
 # 常量的所有字母设置为大写，用以区分。
 # HTML_ROOT_DIR 为静态文件根目录
 
-HTML_ROOT_DIR = "./html"
+HTML_ROOT_DIR = "../html"
 
 
 class HTTPServer(object):
@@ -28,10 +28,9 @@ class HTTPServer(object):
         request_start_line = request_line[0]
         file_name = re.match(r"\w+ +(/[^ ]*) ", request_start_line.decode("utf=8")).group(1)
 
-        # if "/" == file_name:
-        if file_name == '/':
+        # if file_name == '/':
+        if "/" == file_name:
             file_name = "/index.html"
-
         try:
             file = open(HTML_ROOT_DIR + file_name, "rb")
         except IOError:

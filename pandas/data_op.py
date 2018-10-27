@@ -15,7 +15,7 @@ print(rows)
 
 # 选取列
 # cols.head()用于获取前五行
-cols = df[['宝贝','价格']]
+cols = df[['宝贝', '价格']]
 print(cols.head())
 
 # 块的选取
