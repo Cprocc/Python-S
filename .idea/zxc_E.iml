@@ -3,6 +3,8 @@
   <component name="NewModuleRootManager">
     <content url="file://$MODULE_DIR$">
       <sourceFolder url="file://$MODULE_DIR$/stockstar/stockstar" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/PythonWeb/WSGIpython" isTestSource="false" />
       <excludeFolder url="file://$MODULE_DIR$/123" />
       <excludeFolder url="file://$MODULE_DIR$/venv" />
     </content>
