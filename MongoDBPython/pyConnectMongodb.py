@@ -14,6 +14,7 @@ stu = db.stu
 # stu.delete_one({'name': 'gi2'})
 
 # select
+# sort的参数和直接在mongo.exe中调用有所不同
 cursor = stu.find({'age': {'$lte': 20}}).sort('_id', DESCENDING).skip(10).limit(5)
 for s in cursor:
     print(s['name'])
