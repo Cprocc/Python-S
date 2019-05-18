@@ -20,4 +20,3 @@ for s in cursor:
     print(s['name'])
 
 print((stu.find_one({'age': 20}))['name'])
-

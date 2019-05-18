@@ -28,4 +28,4 @@ def get_translate_data(word = None):
     #打印翻译完的数据
     print(content['translateResult'] [0] [0] ['tgt'])
 if __name__ == '__main__':
-    get_translate_data('我爱国')
+    get_translate_data('hello')

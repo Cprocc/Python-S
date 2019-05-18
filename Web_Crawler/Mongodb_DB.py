@@ -12,7 +12,7 @@ search_result = taobao['search_result']
 
 url = 'https://s.taobao.com/search?q=%E8%BF%9E%E8%A1%A3%E8%A3%99&search=%E6%8F%90%E4%BA%A4&tab=all&sst=1&n=20&buyitnow&m=api4h5&abtest=24&wlsort=24&page=1'
 strhtml = requests.get(url)
-result = strhtml.json( )
+result = strhtml.json()
 
 for item in result['listItem']:
     json_data = {
@@ -21,4 +21,3 @@ for item in result['listItem']:
         'sold' : int(item['sold']),
         'location' : item['location']
     }
-search_result.insert(json_data)
