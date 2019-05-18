@@ -1,4 +1,5 @@
 import pandas as pd
+
 df = pd.read_csv("D:/taobao_data.csv")
 df.head()
 
@@ -10,9 +11,8 @@ print(df_mean)
 
 
 
-# %matplotlib inline
-# import matplotlib as mpl
-# import matplotlib.pyplot as plt
+import matplotlib as mpl
+import matplotlib.pyplot as plt
 
 mpl.style.use('ggplot')
 
@@ -35,3 +35,5 @@ fig, ax = plt.subplots(1,1,figsize=(12,4))
 ax.scatter(df.价格,df.成交量)
 ax.set_xlabel("price")
 ax.set_ylabel("nums")
+
+plt.show()
