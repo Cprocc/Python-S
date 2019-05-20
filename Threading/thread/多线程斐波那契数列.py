@@ -1,4 +1,4 @@
-from myThread import MyThread
+from Threading.thread.myThread import MyThread
 from time import sleep, ctime
 
 
